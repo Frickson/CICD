@@ -33,13 +33,17 @@ pipeline {
           }
         }
      
-  stage('Publish image to Docker Hub') {
+	stage('Publish image to Docker Hub') {
           
-	  steps {
+            steps {
+        withDockerRegistry([ credentialsId: "frickson", url: "" ]) {
           sh  'docker push frickson/webapp:latest'
-              
+        //  sh  'docker push frickson/webapp:$BUILD_NUMBER' 
+        }
+                  
           }
         }
+     
 
       stage('Run Docker container on Jenkins Agent') {
              
