@@ -39,7 +39,7 @@ pipeline {
 		    script { 
                     docker.withRegistry( '', registryCredential ) { 
                         dockerImage.push()
-			sh  'docker push frickson/webapp:latest'
+			
                     }
                 }        
          
