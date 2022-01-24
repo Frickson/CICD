@@ -32,7 +32,7 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+        withDockerRegistry([ credentialsId: "frickson", url: "" ]) {
           sh  'docker push frickson/webapp:latest'
         //  sh  'docker push frickson/webapp:$BUILD_NUMBER' 
         }
