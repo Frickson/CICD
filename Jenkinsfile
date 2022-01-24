@@ -1,4 +1,8 @@
 pipeline {
+	environment { 
+        registry = "frickson/webapp" 
+        registryCredential = 'frickson'  
+    }
     agent any
     tools{
        maven 'Maven' 
@@ -32,11 +36,13 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([credentialsId: 'frickson', url: "frickson/webapp" ]) {
-          sh  'docker push frickson/webapp:latest'
-        //  sh  'docker push frickson/webapp:$BUILD_NUMBER' 
-        }
-                  
+		    script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push()
+			sh  'docker push frickson/webapp:latest'
+                    }
+                }        
+         
           }
         }
      
