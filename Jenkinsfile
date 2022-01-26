@@ -45,14 +45,14 @@ pipeline {
         }
      
 
-      stage('Run Docker container on Jenkins Agent') {
+//       stage('Run Docker container on Jenkins Agent') {
              
-            steps 
-			{
-                sh "docker run -d -p 8003:8080 frickson/webapp"
+//             steps 
+// 			{
+//                 sh "docker run -d -p 8003:8080 frickson/webapp"
  
-            }
-        }
+//             }
+//         }
  stage('Run Docker container on remote hosts') {
              
             steps {
