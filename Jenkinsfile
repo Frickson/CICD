@@ -26,7 +26,7 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t webapp:latest .' 
+                //sh 'docker build -t webapp:latest .' 
                 sh 'docker tag webapp frickson/webapp:latest'
                 //sh 'docker tag webapp frickson/webapp:$BUILD_NUMBER'
                
